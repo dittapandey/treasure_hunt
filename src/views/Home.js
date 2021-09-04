@@ -1,25 +1,30 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useHistory } from "react-router";
 import axios from "axios";
 import Navbar from "../components/Navbar"
 import './Home.css';
+import AppContext from "../AppContext";
+import Navbar1 from "../components/Navbar1";
 
 const Home = ({setLoginUser}) => {
+    const myContext = useContext(AppContext);
     const [rollNumber, setRollNumber] = useState("");
     const [password, setPassword] = useState("");
     const history = useHistory();
     const handleSubmit = async (e)=>{
       e.preventDefault();
       const data = {rollNumber, password};
-      await axios.post(`/users/${rollNumber}`, data)
+      await axios.post(`http://localhost:5000/users/${rollNumber}`, data)
       .then(res => {
         alert(res.data.message);
-        setLoginUser(res.data.user);
+        myContext.setLoginUser(res.data.user);
+        console.log(myContext.user);
+        history.push("/game1");
       })
     }
     return ( 
         <div className="col-24">
-            <Navbar/>
+            <Navbar1 />
             <div class="container" v-else>
               <div class="row">
                 <div class="col-12 col-md-6 mt-4">
@@ -27,7 +32,7 @@ const Home = ({setLoginUser}) => {
                     <form class="mt-4" onSubmit = {handleSubmit}>     
                       {/* @submit.prevent="startGame" */}
                       <div class="form-group">
-                        <label for="exampleInputFullName">Full Name</label>
+                        <label for="exampleInputFullName">Roll Number</label>
                         <input
                           type="fullName"
                           class="form-control"
@@ -46,6 +51,7 @@ const Home = ({setLoginUser}) => {
                         <input
                           type="password"
                           class="form-control"
+                          placeholder="Password"
                           id="exampleInputEmail"
                           value={password}
                           onChange={(e)=> setPassword(e.target.value)}

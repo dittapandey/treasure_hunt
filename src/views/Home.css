@@ -1,4 +1,3 @@
-.homePage{
-    display:flex;
-    flex-direction: column;
+.container{
+    padding-top: 15%;
 }

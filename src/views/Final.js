@@ -1,5 +1,6 @@
 import './Final.css'
 import minion from '../images/Minion.png'
+import Navbar from '../components/Navbar';
 const Final = () => {
     return ( 
         <div className="final">
@@ -14,8 +15,7 @@ const Final = () => {
                     <p>Loading...</p>
                 </div>
                 </div> */}
-                
-                    
+                        
             <div class="container" v-else>
                 <div class="content">
                     <div className="image">
@@ -28,7 +28,7 @@ const Final = () => {
                         And that's all Folks! <br />
                         <br />
 
-                        Thank you for participating in QuaRunTime. Hope you have enjoyed the
+                        Thank you for participating in The treasure Hunt. You are now ordained as a minion. Hope you have enjoyed the
                         event! 🎉
                     </p>
                 </div>

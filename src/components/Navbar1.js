@@ -1,10 +1,9 @@
-import './Navbar.css';
-import logo from '../images/Technothlon-logo.png';
-import { useContext, useEffect, useState } from 'react';
+import './Navbar1.css';
+import { useContext, useState } from 'react';
 import treasureHunt from '../images/TREASUREHUNT.png';
 import { useHistory } from 'react-router';
 import AppContext from '../AppContext';
-const Navbar = () => {
+const Navbar1 = () => {
     const history = useHistory();
     const [isClicked, setIsClicked] = useState(false);
     const myContext = useContext(AppContext);
@@ -21,16 +20,14 @@ const Navbar = () => {
         console.log(myContext.user);
         alert("You have Signed out");
         localStorage.clear(myContext.user);
-        history.push('/signin');
+        history.push('/final');
+        history.block();
     }
-
-    useEffect(()=>{console.log("Dropdown done")},[isClicked]);
-
     return (
         <div className="header">
             
             <nav class="navbar navbar-light sticky-top" style={{backgroundColor: "#f59800"}} >
-            {/* <img src={logo} width="10%" height="30vh" /> */}
+            
             <h2 class="navbar-brand px-3"><a className="game-name">Treasure Hunt</a></h2>
             {/* <a class="btn btn-danger" href="https://www.iitg.ac.in/campusmap/" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                 Map
@@ -41,7 +38,7 @@ const Navbar = () => {
                 </div>
             </div> */}
             <div class="d-flex flex-row-reverse">
-            <a class="btn btn-danger px-3 mx-4" onClick={handleClick} >Logout</a>
+            {/* <a class="btn btn-danger px-3 mx-4" onClick={handleClick} >Logout</a> */}
             <div class="dropdown mx-3">
                 <a class="btn btn-danger dropdown-toggle" type="button" onClick={dropdown}>
                     Instructions
@@ -67,4 +64,4 @@ const Navbar = () => {
      );
 }
  
-export default Navbar;
+export default Navbar1;

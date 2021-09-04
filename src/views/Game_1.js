@@ -1,9 +1,28 @@
-import Navbar from "../components/Navbar"
+import { useEffect, useState } from "react";
+import { useHistory } from "react-router";
+import Navbar from "../components/Navbar";
+import QuestionImage from "../images/clue1.jpg";
 
-const Game = () => {
+const Game_1 = () => {
+  const question = "";
+  const answer = "iitg lake";
+  const [givenAnswer, setGivenAnswer] = useState("nothing");
+  const [isAnsCor, setIsAnsCor] = useState(false);
+  const history = useHistory();
+  const verifyAnswer = (e) => {
+    e.preventDefault();
+    if(givenAnswer.toUpperCase() === answer.toUpperCase()){
+      setIsAnsCor(true);
+      alert("You answered the question correctly. Onto the next question minion");
+      history.push("/game2");
+    } else {
+      alert("The answer was incorrect. My minion, try again!");
+
+    }
+  }
     return ( 
         <div className="game">
-            <Navbar/>
+            <Navbar />
             <div class="container">
     {/* <div class="m-5 loading" v-if="isLoading">
       <div class="mx-auto" style={{width: "50%"; textAlign: "center"}}>
@@ -17,7 +36,7 @@ const Game = () => {
       </div>
     </div> */}
     <div class="row" v-else>
-      <div class="col col-lg-6 mx-auto m-5">
+      <div class="col col-lg-10 mx-auto m-5">
         <div class="card p-3">
           <h3 class="pb-3">
             <b
@@ -25,56 +44,43 @@ const Game = () => {
             >
           </h3>
           <img
-            src="image"
+            src={QuestionImage}
             class="mx-auto"
             style={{width: "100%"}}
-            alt="`{level}`"
+            alt=""
           />
           <div class="card-body">
             <p class="card-text">
-              What is your name?
+              {question}
             </p>
-            <form class="form-inline" onSubmit="verifyAnswer">
+            <form class="form-inline" onSubmit={(e)=>verifyAnswer(e)}>
               <div class="form-group mb-2">
                 <label for="validationServer01" class="sr-only">Answer</label>
                 <input
                   type="text"
                   class="form-control"
-                  class="{
-                    'is-valid': isAnswerCorrect == true,
-                    'is-invalid': isAnswerCorrect == false,
-                  }"
                   
-                  readonly="isAnswerCorrect"
                   id="validationServer01"
                   placeholder="Enter your Answer"
                   required
-                  v-model="answer"
+                  value={givenAnswer}
+                  onChange = {(e)=> setGivenAnswer(e.target.value)}
                 />
-                <div
-                  class="{
-                    'valid-feedback': isAnswerCorrect,
-                    'invalid-feedback': !isAnswerCorrect,
-                  }"
-                >
-                  <b>well done </b>
-                </div>
               </div>
-              <button
-                v-if="!isAnswerCorrect"
+               {/* <button
                 type="submit"
                 class="btn mb-2"
                 style={{backgroundColor: "#f59800"}}
               >
                 <span
-                  v-if="spinning"
+                  // v-if="spinning"
                   class="spinner-border spinner-border-sm"
                   role="status"
                   aria-hidden="true"
                 ></span>
-                <span v-if="spinning" class="sr-only">&nbsp; Verifying...</span>
-                <span v-else class="sr-only">Verify Answer</span>
-              </button>
+                 <span v-if="spinning" class="sr-only">&nbsp; Verifying...</span>
+                 <span v-else class="sr-only">Verify Answer</span>  
+              </button>   */}
               <button v-else onClick="checkLevel" class="btn btn-success mb-2">
                 Play Next Level
               </button>
@@ -89,4 +95,4 @@ const Game = () => {
     );
 }
 
-export default Game;
+export default Game_1;
