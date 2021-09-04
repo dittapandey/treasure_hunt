@@ -3,11 +3,9 @@ import logo from '../images/Technothlon-logo.png';
 import { useContext, useEffect, useState } from 'react';
 import treasureHunt from '../images/TREASUREHUNT.png';
 import { useHistory } from 'react-router';
-import AppContext from '../AppContext';
 const Navbar = () => {
     const history = useHistory();
     const [isClicked, setIsClicked] = useState(false);
-    const myContext = useContext(AppContext);
     const dropdown = () => {
         if(isClicked === false){
             setIsClicked(true);
@@ -16,12 +14,15 @@ const Navbar = () => {
         }
     }
     const handleClick = () => {
-        
-        myContext.setLoginUser();
-        console.log(myContext.user);
+        // myContext.setLoginUser();
+        // console.log(myContext.user);
         alert("You have Signed out");
-        localStorage.clear(myContext.user);
-        history.push('/signin');
+        // localStorage.clear(myContext.user);
+        localStorage.removeItem("user");
+        localStorage.clear();
+        // history.go(0);
+        history.push('/final');
+        history.block();
     }
 
     useEffect(()=>{console.log("Dropdown done")},[isClicked]);

@@ -3,12 +3,10 @@ import { useHistory } from "react-router";
 import axios from "axios";
 import Navbar from "../components/Navbar"
 import './Home.css';
-import AppContext from "../AppContext";
 import Navbar1 from "../components/Navbar1";
 import { AuthContext } from "../context/authContext";
 
 const Home = ({setLoginUser}) => {
-    const myContext = useContext(AppContext);
     const [rollNumber, setRollNumber] = useState("");
     const [password, setPassword] = useState("");
     const history = useHistory();
