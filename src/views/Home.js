@@ -3,39 +3,41 @@ import { useHistory } from "react-router";
 import axios from "axios";
 import Navbar from "../components/Navbar"
 import './Home.css';
-import AppContext from "../AppContext";
 import Navbar1 from "../components/Navbar1";
+import { AuthContext } from "../context/authContext";
 
 const Home = ({setLoginUser}) => {
-    const myContext = useContext(AppContext);
     const [rollNumber, setRollNumber] = useState("");
     const [password, setPassword] = useState("");
     const history = useHistory();
+    const {dispatch} = useContext(AuthContext);
     const handleSubmit = async (e)=>{
       e.preventDefault();
+      dispatch({ type: "LOGIN_START" });
       const data = {rollNumber, password};
       await axios.post(`http://localhost:5000/users/${rollNumber}`, data)
       .then(res => {
         alert(res.data.message);
-        myContext.setLoginUser(res.data.user);
-        console.log(myContext.user);
+        dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+        // myContext.setLoginUser(res.data.user);
+        // console.log(myContext.user);
         history.push("/game1");
       })
     }
     return ( 
         <div className="col-24">
             <Navbar1 />
-            <div class="container" v-else>
-              <div class="row">
-                <div class="col-12 col-md-6 mt-4">
-                  <h4 class="mt-3"><b>Details</b></h4>
-                    <form class="mt-4" onSubmit = {handleSubmit}>     
+            <div className="container" v-else>
+              <div className="row">
+                <div className="col-12 col-md-6 mt-4">
+                  <h4 className="mt-3"><b>Details</b></h4>
+                    <form className="mt-4" onSubmit = {handleSubmit}>     
                       {/* @submit.prevent="startGame" */}
-                      <div class="form-group">
+                      <div className="form-group">
                         <label for="exampleInputFullName">Roll Number</label>
                         <input
                           type="fullName"
-                          class="form-control"
+                          className="form-control"
                           id="exampleInputFullName"
                           placeholder="Roll Number"
                           value={rollNumber}
@@ -46,11 +48,11 @@ const Home = ({setLoginUser}) => {
                         />
                         {/* {{ fullName }} */}
                       </div>
-                      <div class="form-group mt-4">
+                      <div className="form-group mt-4">
                         <label for="exampleInputEmail">Password</label>
                         <input
                           type="password"
-                          class="form-control"
+                          className="form-control"
                           placeholder="Password"
                           id="exampleInputEmail"
                           value={password}
@@ -62,16 +64,16 @@ const Home = ({setLoginUser}) => {
                       <button
                         type="submit"
                         // disabled="btnDisabled"
-                        class="btn btn-success mt-4"
+                        className="btn btn-success mt-4"
           
                       >
-                        <span v-else class="sr-only">Submit & Start Game</span>
+                        <span v-else className="sr-only">Submit & Start Game</span>
                       </button>
                     </form>
                   </div>
-      <div class="col-12 col-md-6 mt-4">
-        <h4 class="mt-3"><b>Rules</b></h4>
-        <div class="card py-5 px-2 mb-3 mt-4">
+      <div className="col-12 col-md-6 mt-4">
+        <h4 className="mt-3"><b>Rules</b></h4>
+        <div className="card py-5 px-2 mb-3 mt-4">
           <ul>
             <li>The treasure hunt starts at 11 am till 7 pm.</li>
             <br />
