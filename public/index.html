@@ -44,4 +44,50 @@
     -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   </body>
+  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="./main.js"></script>
+<script>
+    var modal1 = document.getElementById("painting1_final_modal");
+    var img1 = document.getElementById("painting1_final");
+    // var span1 = document.getElementsByClassName("close")[0];
+    img1.onclick = function () {
+        modal1.style.display = "block";
+
+    }
+    $('#painting_close1').on('click', () => {
+        modal1.style.display = "none";
+    });
+
+</script>
+<script>
+    $('#submit').on('click', () => {
+        // let total_square = $('#puzzle').find('.square').length;
+        // console.log($('#puzzle').find('.square').eq(1).text());
+        // for (let i = 0; i < 15; i++) }
+        //     submittedCrossword[i] = new Array(15);
+        // var k = 0;
+        // for (let i = 0; i < 15; i++) }
+        //     for (let j = 0; j < 15; j++) }
+        //         submittedCrossword[i][j] = $('#puzzle').find('.square').eq(k).text();
+        //         k++;
+        //     }
+        // console.log(submittedCrossword);
+
+        $.ajax({
+            type: "POST",
+            url: "{%url 'mastermind_submission' %}",
+            data: {
+                'mastermind_solver': score,
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+            },
+            dataType: 'json',
+            success: function (data) {
+                alert("Your response have been submitted");
+                window.location.href = "{% url 'thirdyear' %}"
+            }
+        });
+    });
+</script>
+
 </html>
