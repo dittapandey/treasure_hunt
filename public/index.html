@@ -44,4 +44,296 @@
     -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   </body>
+  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="./main.js"></script>
+<script>
+    var modal1 = document.getElementById("painting1_final_modal");
+    var img1 = document.getElementById("painting1_final");
+    // var span1 = document.getElementsByClassName("close")[0];
+    img1.onclick = function () {
+        modal1.style.display = "block";
+
+    }
+    $('#painting_close1').on('click', () => {
+        modal1.style.display = "none";
+    });
+
+</script>
+<script>
+    $('#submit').on('click', () => {
+        // let total_square = $('#puzzle').find('.square').length;
+        // console.log($('#puzzle').find('.square').eq(1).text());
+        // for (let i = 0; i < 15; i++) }
+        //     submittedCrossword[i] = new Array(15);
+        // var k = 0;
+        // for (let i = 0; i < 15; i++) }
+        //     for (let j = 0; j < 15; j++) }
+        //         submittedCrossword[i][j] = $('#puzzle').find('.square').eq(k).text();
+        //         k++;
+        //     }
+        // console.log(submittedCrossword);
+
+        $.ajax({
+            type: "POST",
+            url: "{%url 'mastermind_submission' %}",
+            data: {
+                'mastermind_solver': score,
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+            },
+            dataType: 'json',
+            success: function (data) {
+                alert("Your response have been submitted");
+                window.location.href = "{% url 'thirdyear' %}"
+            }
+        });
+    });
+</script>
+<script src="./puzzle1.js"></script>
+	<script src="./dist/game.min.js" type="module"></script>
+  <script>
+    var modal123 = document.getElementById("painting10_final_modal");
+    var img123 = document.getElementById("painting10_final");
+    // var span1 = document.getElementsByClassName("close")[0];
+    img123.onclick = function () {
+        modal123.style.display = "block";
+
+    }
+    $('#painting_close10').on('click', () => {
+        modal123.style.display = "none";
+    });
+</script>
+
+
+<script>
+	var locker1 = "Not_answered";
+    var locker2 = "Not_answered";
+    var locker3 = "Not_answered";
+    var locker4 = "Not_answered";
+    var locker5 = "Not_answered";
+
+
+
+    var modal1 = document.getElementById("painting1_final_modal");
+    var img1 = document.getElementById("painting1_final");
+    // var span1 = document.getElementsByClassName("close")[0];
+    img1.onclick = function () {
+        modal1.style.display = "block";
+
+    }
+    $('#painting_close1').on('click', () => {
+        modal1.style.display = "none";
+    });
+
+    var modal2 = document.getElementById("painting2_final_modal");
+    var img2 = document.getElementById("painting2_final");
+    // var span2 = document.getElementsByClassName("close")[0];
+    img2.onclick = function () {
+        modal2.style.display = "block";
+    }
+    $('#painting_close2').on('click', () => {
+        modal2.style.display = "none";
+    })
+
+    var modal3 = document.getElementById("painting3_final_modal");
+    var img3 = document.getElementById("painting3_final");
+    // var span3 = document.getElementsByClassName("close")[0];
+    img3.onclick = function () {
+        modal3.style.display = "block";
+    }
+    $('#painting_close3').on('click', () => {
+        modal3.style.display = "none";
+    });
+
+    var modal4 = document.getElementById("painting4_final_modal");
+    var img4 = document.getElementById("painting4_final");
+    // var span4 = document.getElementsByClassName("close")[0];
+    img4.onclick = function () {
+        modal4.style.display = "block";
+    }
+    $('#painting_close4').on('click', () => {
+        modal4.style.display = "none";
+    });
+
+    var modal5 = document.getElementById("locker1_final_modal");
+    var img5 = document.getElementById("locker1_final");
+    // var span5 = document.getElementsByClassName("close")[0];
+    img5.onclick = function () {
+        modal5.style.display = "block";
+
+    }
+    $('#locker_close1').on('click', () => {
+        modal5.style.display = "none";
+    });
+
+    var modal6 = document.getElementById("locker2_final_modal");
+    var img6 = document.getElementById("locker2_final");
+    // var span6 = document.getElementsByClassName("close")[0];
+    img6.onclick = function () {
+        modal6.style.display = "block";
+
+    }
+    $('#locker_close3').on('click', () => {
+        modal6.style.display = "none";
+    });
+
+    var modal7 = document.getElementById("cupboard_final_modal");
+    var img7 = document.getElementById("cupboard_final");
+    // var span7 = document.getElementsByClassName("close")[0];
+    img7.onclick = function () {
+        modal7.style.display = "block";
+
+    }
+    $('#cubboard_close').on('click', () => {
+        modal7.style.display = "none";
+    });
+
+    var modal8 = document.getElementById("door_final_modal");
+    var img8 = document.getElementById("door_final");
+    // var span8 = document.getElementsByClassName("close")[0];
+    img8.onclick = function () {
+        modal8.style.display = "block";
+
+    }
+    $('#door_close').on('click', () => {
+        modal8.style.display = "none";
+    });
+
+
+    var modal9 = document.getElementById("locker1modal2");
+    var submit1 = document.getElementById("locker1q1submit");
+    submit1.onclick = function () {
+        var locker1ans1 = document.getElementById("locker1q1").value;
+        if (locker1ans1 == 2) {
+        	locker1 = 2;
+            // modal9.style.display = "block";
+            // $('#locker_close2').on('click', () => {
+            //     modal9.style.display = "none";
+            // });
+        } else {
+            alert("wrong answer");
+        }
+
+    }
+
+
+
+
+    var modal10 = document.getElementById("cabinetmodal2");
+    var submit2 = document.getElementById("cabinetq1submit");
+    submit2.onclick = function () {
+        var cabinetans1 = document.getElementById("cabinetq1").value;
+        if (cabinetans1 == "CUP") {
+        	locker4 = "CUP";
+            // modal10.style.display = "block";
+            // $('#cabinet_close1').on('click', () => {
+            //     modal10.style.display = "none";
+            // });
+
+        } else {
+            alert("wrong answer");
+        }
+
+    }
+    // var modal12 = document.getElementById("cabinetmodal3")
+    // var submit4 = document.getElementById("cabinetq2submit")
+    // submit4.onclick = function () {
+    //     var cabinetans2 = document.getElementById("cabinetq2").value;
+    //     if (cabinetans2 == "TANGO") {
+    //     	locker5 = "TANGO";
+    //     	modal10.style.display = "none";
+    //         modal12.style.display = "block"
+    //         console.log("Modal12")
+    //         $('#cabinet_close2').on('click', () => {
+    //             modal12.style.display = "none";
+    //         });
+		// 			} else {
+	  //           alert("wrong answer");
+	  //       }
+    // }
+
+    var modal11 = document.getElementById("locker2modal2");
+    var submit3 = document.getElementById("locker2q1submit")
+    submit3.onclick = function () {
+        var locker2ans1 = document.getElementById("locker2q1").value;
+        if (locker2ans1 == 56) {
+        	locker2 = 56;
+            // modal11.style.display = "block";
+            // $('#locker_close4').on('click', () => {
+            //     modal11.style.display = "none";
+            // });
+					} else {
+	            alert("wrong answer");
+	        }
+    }
+
+
+    var submit5 = document.getElementById("doorq1submit")
+    submit5.onclick = function () {
+        var finalans = document.getElementById("doorq1").value;
+        if (finalans == "0") {
+        	locker3 = "0";
+            alert("congrats you are out of the room")
+					} else {
+	            alert("wrong answer");
+	        }
+    }
+
+    var h1 = false;
+    var hint1 = document.getElementById("hint1")
+    hint1.onclick = function () {
+        h1 = true;
+        alert("The first one trumped you ? Alright , so Gianteye (Deepmire and Imaginez), Meramaid (Miraculo and Septimus) . That should be enough . No? Ok then , take this as well : the position of the 13th letter might be ironically lucky to you in each word , maybe arrange something accordingly?");
+    }
+
+    var h2 = false;
+    var hint2 = document.getElementById("hint2")
+    hint2.onclick = function () {
+        h2 = true;
+        alert("Try representing a chess board using these cheese types according to recipes. You may find an analogy with a normal chess board Anyway , the recipe B and C give the same number as the answer .");
+    }
+
+    var h3 = false;
+    var hint3 = document.getElementById("hint3")
+    hint3.onclick = function () {
+        h3 = true;
+        alert("A special pattern which can be related with 5 and 22 in different systems may be formed . A crucial puzzle , so that's all you get .");
+    }
+
+    var h4 = false;
+    var hint4 = document.getElementById("hint4")
+    hint4.onclick = function () {
+        h4 = true;
+        alert("Stuck! Think of complementary colors (blue + yellow is green and so on) , extract red , blue and yellow colored squares from the big square and count the total number of squares , carefully though");
+    }
+
+    var h5 = false;
+    var hint5 = document.getElementById("hint5")
+    hint5.onclick = function () {
+        h5 = true;
+        alert("You must have seen a black jack 21 statement somewhere . Also there are 26 cards , ace means 1 and face means 10 . Think about what other common set has 26 elements , and keep in mind that the sum MUST be 21 .");
+    }
+		//
+    // var jsonanswer = new Object();
+    // $('#submit').on('click', () => {
+    //     console.log(locker1, locker2, locker3, locker4, locker5,h1,h2, h3, h4, h5);
+		//
+    //     jsonanswer = {'hint1':h1,'hint2':h2,'hint3':h3,'hint4':h4,'hint5':h5,'locker1':locker1,'locker2':locker2,'locker3':locker3,'locker4':locker4,'locker5':locker5}
+		//
+    //         $.ajax({
+    //             type: "POST",
+    //             url: "{%url 'mysteryroom_submission' %}",
+    //             data: {
+    //                 'JSONanswer':JSON.stringify(jsonanswer),
+    //                 csrfmiddlewaretoken: '{{ csrf_token }}',
+    //             },
+    //             dataType: 'json',
+    //             success: function (data) {
+    //                 alert("Your response have been submitted");
+    //                 window.location.href = '/graduation'
+    //             }
+    //         });
+    //     }
+    // );
+</script>
 </html>

@@ -17,6 +17,9 @@ import Game_3 from "./views/Game_3";
 import Game_4 from "./views/Game_4";
 import Game_5 from "./views/Game_5";
 import { AuthContext } from "./context/authContext";
+import MasterMind from "./views/masterMind";
+import Sixteen from "./views/sixteen";
+import MysteryRoom from "./views/MysteryRoom";
 
 function App() {
   // const [user, setLoginUser] = useState();
@@ -29,6 +32,9 @@ function App() {
     <>
     <Router>
       <Switch>
+        <Route path="/secret">
+          <MysteryRoom/>
+          </Route>
         <Route exact path = "/home">
          {user? <Redirect to="/game1"/>:  <Home/>}
         </Route>
@@ -56,6 +62,7 @@ function App() {
         </Route>
         <Route path="*">
           <Redirect to="/signin"/>
+
         </Route>
       </Switch>
     </Router>
